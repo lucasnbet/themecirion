@@ -1,0 +1,190 @@
+
+<div class="cron-topbar">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="logo2025 col-lg-2 col-md-6 col-6">
+      <a href="<?php echo home_url(); ?>"><img src="https://www.ciriontechnologies.com/es-ar/wp-content/uploads/2024/12/cirion_logo_v2.svg"></a>
+      </div>
+
+
+<!-- Navigation & Search -->
+<div class="menu2025 col-lg-7 col-md-12 col-6">
+  <div class="navigation-wrap">
+    <nav class="cron-navigation">
+      <?php
+        wp_nav_menu(
+          array(
+            'theme_location'    => 'primary',
+            'container'         => '',
+            'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+            'walker'            => new WP_Bootstrap_Navwalker()
+          )
+        );
+      ?>
+    </nav>
+  </div>
+</div>
+
+
+
+
+<div class="col-lg-3 col-md-6 col-6 top-right">
+<div class="buscador2025"> <?php echo do_shortcode('[elementor-template id="18275"]'); ?></div>
+  
+        <div class="cron-mobile-trigger"><span></span></div>
+        <div class="cron-topbar-navigation">
+          <span class="cron-menu-title">Menu</span>
+          <div class="cron-mobile-close"><span></span></div>
+          <?php 
+          global $blog_id;
+          $current_blog_details = get_blog_details( array( 'blog_id' => $blog_id ) );
+          $blogname = str_replace("Cirion ", "", $current_blog_details->blogname); 
+          if($blogname == "USA") {
+            $search_results_slug = "search-results/";
+          } elseif($blogname == "Brazil" || $blogname == "Brasil") {
+            $search_results_slug = "procurar-resultados/";
+          } else {
+            $search_results_slug = "resultados-de-la-busqueda/";
+          }
+          ?>
+          
+          <?php $sites = get_sites();
+          $site_list=array();
+          foreach($sites as $sites){
+            $blogid=$sites->blog_id;
+            if($blogid!=1){
+              $sitdetail = get_blog_details( array( 'blog_id' => $blogid ) );
+              $blogname=str_replace("Cirion ","",$sitdetail->blogname);
+              if($blogname == "Argentina"){
+                $flag="flag1.png";
+                $lang = 'es-AR';
+              }elseif($blogname == "Brazil" || $blogname == "Brasil"){
+                $flag="flag2.png";
+                $lang = 'pt-BR';
+              }elseif($blogname == "Chile"){
+                $flag="flag3.png";
+                $lang = 'es-CL';
+              }elseif($blogname == "Colombia"){
+                $flag="flag4.png";
+                $lang = 'es-CO';
+              }elseif($blogname == "Ecuador"){
+                $flag="flag7.png";
+                $lang = 'es-EC';
+              }elseif($blogname == "Mexico"){
+                $flag="flag8.png";
+                $lang = 'es-MX';
+              }elseif($blogname == "Peru"){
+                $flag="flag6.png";
+                $lang = 'es-PE';
+              }elseif($blogname == "English"){
+                $flag="flag11.png";
+                $lang = 'en-US';
+              }elseif($blogname == "Venezuela"){
+                $flag="flag10.png";
+                $lang = 'es-VE';
+              }else{
+                $flag="flag11.png";
+                $lang = 'en-US';
+              }
+              $site_list[$blogid]['name']=$blogname;
+              $site_list[$blogid]['url']=$sitdetail->siteurl;
+              $site_list[$blogid]['flag']=$flag;
+              $site_list[$blogid]['lang']=$lang;
+            }
+          }
+          $active_site_id=get_current_blog_id();
+          ?>
+          <div class="cron-topbar-nav-wrap">
+            <nav class="cron-navigation">
+              <ul class="country-list">
+                <li class="has-dropdown country-dropdown">
+                  <span class="mob-dropdown"></span>
+                  <?php if (array_key_exists($active_site_id,$site_list)){ ?>
+                    <a href="#0">
+                      <img src="<?php echo esc_url(CIRION_IMAGES.'/country/'.$site_list[$active_site_id]['flag']); ?>" alt="<?php echo $site_list[$active_site_id]['name'];?>">
+                      
+                      
+                     
+
+                      
+
+                    </a>
+                  <?php } ?>
+                  <ul class="dropdown-nav">
+                    <?php if (array_key_exists($active_site_id,$site_list)){ ?>
+                    
+                      
+                    <li class="cron-back" data-title="<?php echo $site_list[$active_site_id]['name'];?>"></li>
+                    
+                    
+
+                    <?php unset($site_list[$active_site_id]); }
+                    $count = 1;
+                    $current_slug = $_SERVER['REQUEST_URI'];
+                    $split_current_url = explode('/', $current_slug);
+                    $current_url = implode('/', array_slice($split_current_url, 2));
+                    $es_ar_slug = class_exists( 'ACF' ) ? get_field('es_ar_slug') : '';
+                    $pt_br_slug = class_exists( 'ACF' ) ? get_field('pt_br_slug') : '';
+                    $en_us_slug = class_exists( 'ACF' ) ? get_field('en_us_slug') : '';
+                    sort($site_list);
+                    foreach($site_list as $site_list){
+                      if ($active_site_id == 2 && $count == 2) {
+                        $siteName = 'Brazil';
+                      } else {
+                        $siteName = $site_list['name'];
+                      }
+                      $current_siteID = get_current_blog_id();
+                      if ($current_siteID == 2) {
+                        if ($site_list['lang'] == 'en-US') {
+                          $slug = $current_url;
+                        } elseif ($site_list['lang'] == 'pt-BR') {
+                          $slug = $pt_br_slug;
+                        } else {
+                          $slug = $es_ar_slug;
+                        }
+                      } elseif ($current_siteID == 3 || $current_siteID == 5 || $current_siteID == 6 || $current_siteID == 7 || $current_siteID == 8 || $current_siteID == 9 || $current_siteID == 10) {
+                        if ($site_list['lang'] == 'en-US') {
+                          $slug = $en_us_slug;
+                        } elseif ($site_list['lang'] == 'pt-BR') {
+                          $slug = $pt_br_slug;
+                        } else {
+                          $slug = $current_url;
+                        }
+                      } elseif ($current_siteID == 4) {
+                        if ($site_list['lang'] == 'en-US') {
+                          $slug = $en_us_slug;
+                        } elseif ($site_list['lang'] == 'pt-BR') {
+                          $slug = $current_url;
+                        } else {
+                          $slug = $es_ar_slug;
+                        }
+                      } else {
+                        $slug = $current_url;
+                      }
+                      echo '<li>
+                      <a href="'.$site_list['url'].'/'.$slug.'">
+                      <img src="'.esc_url(CIRION_IMAGES.'/country/'.$site_list['flag']).'" alt="'.$site_list['name'].'"><span aria-hidden="true">'.$siteName.'</span>
+                      </a>
+                      </li>'. "\n";
+                    $count++;
+                    } ?>
+                  </ul>
+                </li>
+              </ul>
+              <?php
+                wp_nav_menu(
+                  array(
+                    'theme_location'    => 'topbar',
+                    'container'         => '',
+                    'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+                    'walker'            => new WP_Bootstrap_Navwalker()
+                  )
+                );
+              ?>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

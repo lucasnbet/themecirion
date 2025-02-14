@@ -1,0 +1,25 @@
+<!-- Navigation & Search -->
+<?php if ( has_nav_menu( 'primary' ) ) { ?>
+<div class="cron-main-navigation">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-12 col-md-12">
+        <div class="navigation-wrap">
+          <nav class="cron-navigation">
+            <?php
+              wp_nav_menu(
+                array(
+                  'theme_location'    => 'primary',
+                  'container'         => '',
+                  'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+                  'walker'            => new WP_Bootstrap_Navwalker()
+                )
+              );
+            ?>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<?php } ?>
