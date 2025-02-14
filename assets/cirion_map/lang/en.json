@@ -1,0 +1,61 @@
+{
+  "info0": {
+    "title": "We connect <b>Latin America's</b> major economies"
+  },
+  "info1": {
+    "title": "Network",
+    "bullet1": "<b>~31.000 km</b> Red Long Haul",
+    "bullet2": "<b>~19.300 km</b> Metro Network",
+    "bullet3": "<b>~36.000 km</b> Subsea Network",
+    "bullet4": "<b>~20.0 Tb/s</b> Internet Traffic",
+    "bullet5": "<b>~3.000</b> on-net radio Links",
+    "bullet6": "<b>18</b> Landing Stations",
+    "bullet7": "<b>5 key Subsea Systems</b> (SAC, MAC, PAC, CC, TAC)",
+    "bullet8": "24 x 7 x 365</b> Network Operation Center (NOC)",
+    "convention1": "Network",
+    "convention2": "Landing Stations"
+  },
+  "info2": {
+    "title": "On-Net Market / CDN",
+    "bullet1": "Presence in <b>+20 countries</b>",
+    "bullet2": "<b>+4600</b> on-net radio Links",
+    "bullet3": "<b>Peering</b> connectivity with <b>+30 peers</b>",
+    "bullet4": "<b>~27.0 Tb/s</b> total Peering capacity",
+    "bullet5": "<b>14 CDN</b> Nodes with <b>~13Tbps</b> capacity",
+    "bullet6": "<b>~11.800</b> on-net Buildings",
+    "bullet7": "<b>5 Cloud on-ramps:</b> Google, AWS, IBM, Oracle, Microsoft",
+    "convention1": "On-Net Market",
+    "convention2": "CDN Nodes"
+  },
+  "info3": {
+    "title": "Data Centers",
+    "bullet1": "<b>18</b> Data Centers",
+    "bullet2": "Certified quality by the highest international standards and Tier III certification",
+    "bullet3": "Carrier-Neutral;  <b>+90 carriers</b> in our Data Centers",
+    "bullet4": "Multiple <b>peering agreements</b>",
+    "bullet5": "<b>+4.600</b> cross connects",
+    "bullet6": "<b>24 x 7 x 365</b> support",
+    "convention1": "Data Center",
+    "convention2": "Multiple DC",
+    "convention3": "Collo DC",
+    "convention4": "In construction"
+  },
+  "info4": {
+    "title": "Satellite Teleports",
+    "bullet1": "<b>+4.602</b> satellite on-net Links",
+    "bullet2": "<b>7</b> own teleports and diversity of contracted satellites",
+    "convention1": "Satellite Teleports"
+  },
+  "card1": {
+    "card-name": "Network"
+  },
+  "card2": {
+    "card-name": "On-Net Market / CDN"
+  },
+  "card3": {
+    "card-name": "Data Centers"
+  },
+  "card4": {
+    "card-name": "Satellite Teleports"
+  }
+}
