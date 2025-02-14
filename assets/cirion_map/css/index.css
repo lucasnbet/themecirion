@@ -1,0 +1,190 @@
+/* HTML */
+
+body {
+  margin: 0;
+  font-family: 'Maven Pro', sans-serif;
+}
+
+/* GENERAL */
+
+.hidden {
+  display: none;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+/* BACKGROUND */
+
+.bg {
+  background-image: radial-gradient(rgb(0, 110, 255), rgb(56, 9, 78));
+  background-image: url('../img/background.jpg');
+  background-size: 100% 100%;
+  height: 100vh;
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+/* PLANET */
+
+#planet {
+  display: block;
+  width: 120vw;
+  height: 120vh;
+  z-index: 0;
+  box-sizing: border-box;
+  transition-property: all;
+  transition-timing-function: ease-in-out;
+  transition-duration: 1s;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin-top: -35vh;
+  margin-left: -42vw;
+}
+
+@media (max-width:960px) {
+  #planet {
+    margin-top: -45vh;
+    margin-left: -42vw;
+  }
+}
+
+/* CONTENT */
+
+.content {
+  position: absolute;
+  width: 46vw;
+  display: grid;
+  z-index: 1;
+  right: 5vw;
+  bottom: 10vh;
+}
+
+@media (max-width:960px) {
+  .content {
+    width: 100vw;
+    right: 0;
+    left: 0vw;
+    bottom: 2vh;
+  }
+}
+
+/* SLIDER */
+
+.slider {
+  overflow-x: auto;
+}
+
+.cards {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1vw;
+}
+
+.card {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  cursor: pointer;
+  padding: 15px;
+  box-shadow: 1px 10px 10px rgba(0, 0, 0, 0.2);
+  border: solid 1px white;
+  color: white;
+  transition-property: all;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.8);
+  color: black;
+  box-shadow: 1px 15px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card.active {
+  background-color: white;
+  color: black;
+  box-shadow: 1px 15px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-icon {
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+}
+
+.card-name {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+@media (max-width:960px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+    width: 90vw;
+    padding: 0 5vw;
+    gap: 2vw;
+  }
+
+  .card-name {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+}
+
+/* INFO */
+
+.info {
+  color: white;
+  margin-bottom: 4vh;
+  display: none;
+}
+
+.info.active {
+  display: block;
+}
+
+.title {
+  font-size: 60px;
+  margin: 0;
+  line-height: 95%;
+}
+
+.list {
+  padding-left: 20px;
+  font-size: 18px;
+}
+
+.list li {
+  margin-bottom: 4px;
+}
+
+.conventions {
+  display: flex;
+  gap: 20px;
+}
+
+.convention {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+@media (max-width:960px) {
+  .info {
+    padding: 0 5vw;
+  }
+
+  .title {
+    font-size: 45px;
+  }
+
+  .list {
+    font-size: 14px;
+  }
+}
