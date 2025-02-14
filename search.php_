@@ -1,0 +1,218 @@
+<?php
+/*
+ * The template for displaying archive pages.
+ * Author & Copyright: Cirion
+ * URL: https://www.ciriontechnologies.com/
+ */
+get_header();
+global $wpdb;
+?>
+<?php
+    // All Post Query Count
+    $post_count_all = getPostCount($_REQUEST['s'], "all"); 
+    $search_result_found = $post_count_all - 2;
+   
+    // Solution Query Count
+    $post_count_solutions = getPostCount($_REQUEST['s'], "solutions");
+    
+    // Services Query Count
+    $post_count_services = getPostCount($_REQUEST['s'], "cirion_services");
+
+    // Services Query Count
+    $post_count_usecases = getPostCount($_REQUEST['s'], "use_cases");
+?>
+
+<!-- Generic Search Form Start -->
+<section class="cron-generic-search">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Resultados de Búsqueda</h1>
+          <div class="generic-search-form">
+            <form method="get" action="<?php echo esc_url(home_url('/')); ?>" id="genericsearch" class="genericsearch">
+                <input type="text" name="s" id="s" autocomplete="off" placeholder="<?php echo esc_attr_e('red', ''); ?>" value="<?php echo $_REQUEST["s"]; ?>" />
+                <input type="submit" id="genericsearchsubmit" class="cron-generic-btn" value="" />
+            </form>
+          </div>
+          <div class="search-key">
+            <p>Resultados encontrados para " <b><?php echo $_REQUEST["s"]; ?></b> " = <?php echo $search_result_found; ?>+</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- Generic Search Form End -->
+
+  
+<!-- Generic Search Filter Start -->
+<section class="cron-generic-filter">
+    <div class="container">
+      <div class="row">
+        <div class="generic-tab">
+          <!-- Tab Start -->
+          <ul class="nav nav-tabs d-none d-lg-flex" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <h2 class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" role="tab" aria-controls="all" aria-selected="true"> TODOS (<span class="search-count"><?php echo $post_count_all; ?></span>)  </h2>
+            </li>
+            <li class="nav-item" role="presentation">
+              <h2 class="nav-link" id="solutions-tab" data-bs-toggle="tab" data-bs-target="#solutions" role="tab" aria-controls="solutions" aria-selected="false"> SOLUCIONES (<span class="search-count"><?php echo $post_count_solutions; ?></span>) </h2>
+            </li>
+            <li class="nav-item" role="presentation">
+              <h2 class="nav-link" id="products-tab" data-bs-toggle="tab" data-bs-target="#products" role="tab" aria-controls="products" aria-selected="false"> PRODUCTOS (<span class="search-count"><?php echo $post_count_services; ?></span>) </h2>
+            </li>
+            <li class="nav-item" role="presentation">
+              <h2 class="nav-link" id="usecases-tab" data-bs-toggle="tab" data-bs-target="#usecases" role="tab" aria-controls="usecases" aria-selected="false">CASOS DE USO (<span class="search-count"><?php echo $post_count_usecases; ?></span>) </h2>
+            </li>                 
+          </ul>
+          <!-- Tab End -->
+
+          <!-- Tab Content Start -->
+          <div class="tab-content accordion" id="CirionTabContent">
+          <!-- All Tab Start -->
+            <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+            <div class = "cvf_pag_loading">
+                <div class = "cvf_universal_container">
+                    <div class="cvf-universal-content"></div>
+                </div>
+            </div>
+            <?php    
+            $search_query = getSearchResults($_REQUEST['s'], "all"); 
+            if( $search_query->have_posts() ){
+              while($search_query->have_posts()){
+                $search_query->the_post();
+                $post_title = get_the_title();                      
+                $post_text = get_the_excerpt();
+                $get_link = get_permalink($id);
+                $keys= explode(" ",$s);
+                $post_title = preg_replace('/('.implode('|', $keys) .')/iu', '<strong class="search_highlight">\0</strong>', $post_title);
+                $post_text = preg_replace('/('.implode('|', $keys) .')/iu', '<strong class="search_highlight">\0</strong>', $post_text);
+                
+                $output ='<div class="search-text">
+                <h3><a href="'.$get_link.'">'.$post_title.'</a></h3>
+                <p>'.$post_text.'</p>
+                </div>';
+                echo  $output;
+              }
+              ?> 
+              <?php
+              //Pagination
+               postPagination($search_query);
+            }
+            else{
+              searchNotFound($s);
+            }
+              ?>                 
+            </div>
+          <!-- All Tab End -->
+
+          <!-- Solutions Tab Start -->
+            <div class="tab-pane fade" id="solutions" role="tabpanel" aria-labelledby="solutions-tab">                   
+                  <div class="accordion-collapse collapse d-lg-block" aria-labelledby="accordionheadingTwo" data-bs-parent="#CirionTabContent">
+                  <?php   
+              $search_query = getSearchResults($_REQUEST['s'], "solutions"); 
+              if( $search_query->have_posts() ){
+                while($search_query->have_posts()){
+                  $search_query->the_post();
+                  $post_title = get_the_title();                      
+                  $post_text = get_the_excerpt();
+                  $get_link = get_permalink($id);
+                  $keys= explode(" ",$s);
+                  $post_title = preg_replace('/('.implode('|', $keys) .')/iu', '<strong class="search_highlight">\0</strong>', $post_title);
+                  $post_text = preg_replace('/('.implode('|', $keys) .')/iu', '<strong class="search_highlight">\0</strong>', $post_text);
+                  
+                  $output ='<div class="search-text">
+                  <h3><a href="'.$get_link.'">'.$post_title.'</a></h3>
+                  <p>'.$post_text.'</p>
+                  </div>';
+                  echo  $output;
+                }                     
+                ?> 
+                <?php
+                //Pagination
+                postPagination($search_query);
+              }    
+              else{
+              searchNotFound($s);
+            }                   
+                  ?>            
+                  </div>
+            </div>
+          <!-- Solutions Tab End -->
+
+          <!-- Products Tab Start -->
+            <div class="tab-pane fade" id="products" role="tabpanel" aria-labelledby="products-tab">              
+              <div class="accordion-collapse collapse d-lg-block" aria-labelledby="accordionheadingThree" data-bs-parent="#CirionTabContent">
+              <?php  
+                $search_query = getSearchResults($_REQUEST['s'], "cirion_services"); 
+                if( $search_query->have_posts() ){
+                  while($search_query->have_posts()){
+                    $search_query->the_post();
+                    $post_title = get_the_title();                      
+                    $post_text = get_the_excerpt();
+                    $get_link = get_permalink($id);
+                    $keys= explode(" ",$s);
+                    $post_title = preg_replace('/('.implode('|', $keys) .')/iu', '<strong class="search_highlight">\0</strong>', $post_title);
+                    $post_text = preg_replace('/('.implode('|', $keys) .')/iu', '<strong class="search_highlight">\0</strong>', $post_text);
+                    
+                    $output ='<div class="search-text">
+                    <h3><a href="'.$get_link.'">'.$post_title.'</a></h3>
+                    <p>'.$post_text.'</p>
+                    </div>';
+                    echo  $output;
+                  }
+                  ?> 
+                  <?php
+                  //Pagination
+                  postPagination($search_query);
+                }
+                else{
+                searchNotFound($s);
+              }                  
+                  ?>
+              </div>
+            </div>
+          <!-- Products Tab End -->
+
+          <!-- Usecases Tab Start -->
+            <div class="tab-pane fade" id="usecases" role="tabpanel" aria-labelledby="usecases-tab">                    
+              <div class="accordion-collapse collapse d-lg-block" aria-labelledby="accordionheadingFour" data-bs-parent="#CirionTabContent">
+              <?php    
+                  $search_query = getSearchResults($_REQUEST['s'], "use_cases"); 
+                  if( $search_query->have_posts() ){
+                    while($search_query->have_posts()){
+                      $search_query->the_post();
+                      $post_title = get_the_title();                      
+                      $post_text = get_the_excerpt();
+                      $get_link = get_permalink($id);
+                      $keys= explode(" ",$s);
+                      $post_title = preg_replace('/('.implode('|', $keys) .')/iu', '<strong class="search_highlight">\0</strong>', $post_title);
+                      $post_text = preg_replace('/('.implode('|', $keys) .')/iu', '<strong class="search_highlight">\0</strong>', $post_text);
+                      
+                      $output ='<div class="search-text">
+                      <h3><a href="'.$get_link.'">'.$post_title.'</a></h3>
+                      <p>'.$post_text.'</p>
+                      </div>';
+                      echo  $output;
+                    }                     
+                    ?> 
+                    <?php
+                    //Pagination
+                    postPagination($search_query);
+                  }    
+                  else{
+                    searchNotFound($s);
+                  }    
+                  ?> 
+              </div>
+            </div>  
+          <!-- Usecases Tab End -->
+          </div>
+          <!-- Tab Content End -->
+        </div>
+      </div>
+    </div>
+</section>
+<!-- Generic Search Filter End -->
+<?php
+get_footer();
+

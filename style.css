@@ -1,0 +1,25 @@
+/* Mod 25-11-2024 manunezg | SMS Sudamerica*/
+/*
+Theme Name: Cirion
+Author: Verticurl
+Author URI: https://verticurl.com/
+Description: Cirion is a professional and super flexible WordPress theme with the Well-planned design and handcrafted features let you create a dream website without losing the essence of your business. Innovative and aesthetically polished header and footer variations help you to present your information in a much more efficient way. An excellent user-friendly combination of functionality and comfort help you to achieve everything you need it for your business.
+Version: 1.5
+License: GNU General Public License version 3.0
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+Text Domain: cirion
+Tags: blog, custom-background, custom-colors, custom-logo, custom-header, custom-menu, featured-images, flexible-header, full-width-template, footer-widgets, sticky-post, threaded-comments, left-sidebar, right-sidebar, theme-options, translation-ready
+*/
+.alignleft {display: inline;float: left;margin-right: 1.5em;}.alignright {display: inline;float: right;margin-left: 1.5em;}.aligncenter {clear: both;display: block;margin-left: auto;margin-right: auto;}.clear:before, .clear:after, .entry-content:before, .entry-content:after, .comment-content:before, .comment-content:after, .site-header:before, .site-header:after, .site-content:before, .site-content:after, .site-footer:before, .site-footer:after {content: "";display: table;table-layout: fixed;}.clear:after, .entry-content:after, .comment-content:after, .site-header:after, .site-content:after, .site-footer:after {clear: both;}embed, iframe, object {max-width: 100%;}.bypostauthor {display: inline-block;width: 100%;}.screen-reader-text {border: 0;clip: rect(1px, 1px, 1px, 1px);clip-path: inset(50%);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute !important;width: 1px;word-wrap: normal !important;}.screen-reader-text:focus {background-color: #eee;clip: auto !important;clip-path: none;font-weight: 600;color: #21759b;display: block;font-size: 1em;height: auto;left: 5px;line-height: normal;padding: 15px 23px 14px;text-decoration: none;top: 5px;width: auto;border: 2px solid #21759b;border-radius: 4px;z-index: 100000;}.skip-link {position: absolute;top: 0;z-index: 9999;right: 100%;padding: 5px;padding: 0.5rem;font-size: 20px;font-size: 2rem;color: #000;background: #FFF;}.admin-bar .skip-link {top: 32px;}.skip-link:focus {right: auto;}.wp-caption {margin-bottom: 1.5em;max-width: 100%;}.wp-caption img[class*="wp-image-"] {display: block;margin-left: auto;margin-right: auto;}.wp-caption .wp-caption-text {margin: 0.8075em 0;}.wp-caption-text {text-align: center;}.gallery {margin-bottom: 1.5em;}.gallery-item {display: inline-block;text-align: center;vertical-align: top;width: 100%;}.gallery-columns-2 .gallery-item {max-width: 50%;}.gallery-columns-3 .gallery-item {max-width: 33.33%;}.gallery-columns-4 .gallery-item {max-width: 25%;}.gallery-columns-5 .gallery-item {max-width: 20%;}.gallery-columns-6 .gallery-item {max-width: 16.66%;}.gallery-columns-7 .gallery-item {max-width: 14.28%;}.gallery-columns-8 .gallery-item {max-width: 12.5%;}.gallery-columns-9 .gallery-item {max-width: 11.11%;}.gallery-caption {display: block;} #image-bg-fit{ object-fit: cover!important;width:1910px!important;}
+.elementor-image-gallery    img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease-in-out;
+        }
+
+
+.elementor-image-gallery  img:hover {
+            filter: grayscale(0%);
+}
