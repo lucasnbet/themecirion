@@ -1,11 +1,11 @@
 === Cirion ===
 <<<<<<< HEAD
-Contributors: verticurl
+Contributors: Cirion
 =======
 <<<<<<< HEAD
-Contributors: verticurl 
+Contributors: Cirion 
 =======
-Contributors: verticurl
+Contributors: Cirion
 >>>>>>> origin/stage
 >>>>>>> bd41618315ccd14e33111f20219dafb6afb64f00
 Requires at least: 5.0
